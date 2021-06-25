@@ -299,8 +299,19 @@ main {
   position: absolute;
   bottom: 0;
   z-index: 2;
-  // display: none;
-  animation: mountain 5s linear;
+  display: none;
+  // animation: mountain 5s linear;
+}
+
+.fade-right, .fade-left {
+  color:inherit;
+}
+
+
+h1{
+  position: relative;
+  bottom:-200px;
+  animation: text-to-top 1s forwards ease-out;
 }
 
 // Button
@@ -315,10 +326,13 @@ main {
   transition: 0.5s;
   position: relative;
   z-index: 5;
+  animation: scale 5s;
+  animation-delay:1s;
 }
 
 .btn:hover,
-.btn:focus {
+.btn:focus,
+.btn:focus-within {
   background: $purple;
 }
 
@@ -348,14 +362,26 @@ main {
   gap: 2rem;
   @include outline;
 }
+
+
+
+
+.opacity{
+  animation: opacity-anim 1s linear;
+}
+
 .box-what-1 {
   background-color: $orange;
+  animation: slide-to-right 1s linear;
 }
 .box-what-2 {
   background-color: $red;
+  animation: slide-to-top 1.3s linear;
+  
 }
 .box-what-3 {
   background-color: $red-darken;
+  animation: slide-to-left 1.6s linear;
 }
 .icon-what {
   font-size: 6rem;
@@ -446,12 +472,13 @@ main {
   background-color: $white;
   box-shadow: $box-shadow;
   padding: 2rem 0.7rem;
-  font-size: 1rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
 }
 
 .img-testimonial {
   clip-path: circle();
   width: 80%;
+  margin: 0 auto;
   box-shadow: $box-shadow;
 }
 
@@ -505,12 +532,104 @@ q {
 
 // Animation
 
-@keyframes mountain {
+@keyframes slide-to-right{
+  from{
+    transform: translateX(-2000px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-left{
+  from{
+    transform: translateX(2000px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-bottom{
+  from{
+    transform: translateY(-2000px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-top{
+  from{
+    transform: translateY(2000px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@keyframes opacity-anim{
   from {
-    bottom: 0;
+    opacity:0;
   }
   to {
-    bottom: 200px;
+    opacity:1;
+  }
+}
+
+@keyframes mountain {
+  from {
+    bottom: 100px;
+  }
+  to {
+    bottom: 80px;
+  }
+}
+
+@keyframes text-to-top{
+  from {
+    bottom:-200px;
+    opacity:0;
+  }
+  to{
+    bottom:0;
+    opacity:1;
+  }
+}
+
+@keyframes scale{
+  from {
+    transform:scale(1);
+  }
+  10% {
+    transform:scale(1.1);
+  }
+  20%{
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(1.1);
+  }
+  40%{
+    transform:scale(1);
+  }
+  50% {
+    transform:scale(1.1);
+  }
+  60%{
+    transform:scale(1);
+  }
+  70% {
+    transform:scale(1.1);
+  }
+  80%{
+    transform:scale(1);
+  }
+  90% {
+    transform:scale(1.1);
+  }
+  to{
+    transform:scale(1);
   }
 }
 
@@ -566,6 +685,14 @@ q {
 
 .d-none{
   display:none;
+}
+
+.hero-img {
+  position: absolute;
+  bottom:0;
+  z-index: 2;
+  display: block;
+  // animation: mountain 5s linear;
 }
 }
 
