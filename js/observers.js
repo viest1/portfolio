@@ -30,10 +30,10 @@ const sliders = document.querySelectorAll(".animation-slide-left")
 const sliders1 = document.querySelectorAll(".animation-slide-right")
 const sliders2 = document.querySelectorAll(".animation-slide-top")
 const sliders3 = document.querySelectorAll(".animation-slide-bottom")
-const sliders4 = document.querySelectorAll(".animation-slide-bottom-testimonial")
+const sliders4 = document.querySelectorAll(".animation-slide-testimonial")
 
 const appearOptions = {
-    threshold: 0,
+    threshold: 0.75,
     rootMargin: "-50px 0px 0px 0px"
 }
 

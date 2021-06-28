@@ -126,7 +126,6 @@ h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
-  color: red;
   font-weight: 500;
 }
 
@@ -218,7 +217,7 @@ h6 {
 
 main {
   background-image: url(../assets/img/slider-preset1-01.jpg);
-  height: 100vh;
+  height: 90vh;
   background-position: center;
   background-size: cover;
   position: relative;
@@ -328,22 +327,22 @@ h1 {
 }
 
 .slide-to-right {
-  animation: slide-to-right 0.3s linear;
+  animation: slide-to-right 0.8s linear;
   opacity: 1;
 }
 
 .slide-to-left {
-  animation: slide-to-left 0.6s linear;
+  animation: slide-to-left 0.8s linear;
   opacity: 1;
 }
 
 .slide-to-top {
-  animation: slide-to-top 0.45s linear;
+  animation: slide-to-top 0.8s linear;
   opacity: 1;
 }
 
 .slide-to-bottom {
-  animation: slide-to-bottom 0.45s linear;
+  animation: slide-to-bottom 0.8s linear;
   opacity: 1;
 }
 
@@ -472,7 +471,7 @@ h1 {
 }
 
 q {
-  color: #000;
+  color: #949494;
   font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
 }
 
