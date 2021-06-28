@@ -43,7 +43,9 @@ h2 {
 
 .container-full-who p,
 .container-full-portfolio p,
-.container-full-testimonial p {
+.container-full-testimonial p,
+.container-full-our-skill p,
+.container-form p {
   color: #949494;
 }
 
@@ -90,12 +92,19 @@ body {
 }
 
 h1 {
-  font-size: clamp(2.35rem, 2.07rem + 3vw, 4.21rem);
+  font-size: clamp(2.35rem, 2.07rem + 3vw, 6rem);
 }
 
 h2,
 h3 {
   font-size: clamp(1.8rem, 1.8rem + 1vw, 3rem);
+}
+
+.title-h2 {
+  font-size: clamp(3.1rem, 3.07rem + 3vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 h1,
@@ -105,6 +114,15 @@ h4,
 h5,
 h6 {
   line-height: 1.1;
+}
+
+.zindex1 {
+  position: relative;
+  z-index: 1;
+}
+
+label {
+  display: block;
 }
 
 .nav-scrolled {
@@ -163,6 +181,15 @@ h6 {
   z-index: -1;
 }
 
+@media (max-width: 670px) {
+  @supports (backdrop-filter: blur(10px)) {
+    .container-nav:focus .list-nav-container,
+.container-nav:focus-within .list-nav-container {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+    }
+  }
+}
 .list-nav-container {
   position: fixed;
   top: -1000px;
@@ -255,6 +282,23 @@ h1 {
   text-shadow: 0 11px 10px rgba(0, 0, 0, 0.19);
 }
 
+.title-h2 {
+  position: relative;
+  width: 100vw;
+  bottom: 0;
+}
+
+.title-h2::before {
+  content: "";
+  position: absolute;
+  top: auto;
+  bottom: -345px;
+  width: 100%;
+  left: 0;
+  height: 420px;
+  background: url(../assets/img/preset1-title-half-img.png) no-repeat scroll center center/cover;
+}
+
 .btn {
   opacity: 0;
   margin-top: 3em;
@@ -276,6 +320,14 @@ h1 {
 .btn:focus,
 .btn:focus-within {
   background: #330f33;
+}
+
+.btn.contact-btn::after {
+  content: url(../assets/img/arrow-down.svg);
+  display: inline-block;
+  margin-left: 1rem;
+  width: 1.2rem;
+  vertical-align: top;
 }
 
 .container-full-section {
@@ -326,26 +378,6 @@ h1 {
   background-color: #930037;
 }
 
-.slide-to-right {
-  animation: slide-to-right 0.8s linear;
-  opacity: 1;
-}
-
-.slide-to-left {
-  animation: slide-to-left 0.8s linear;
-  opacity: 1;
-}
-
-.slide-to-top {
-  animation: slide-to-top 0.8s linear;
-  opacity: 1;
-}
-
-.slide-to-bottom {
-  animation: slide-to-bottom 0.8s linear;
-  opacity: 1;
-}
-
 .icon-what {
   font-size: 6rem;
 }
@@ -391,6 +423,17 @@ h1 {
   background: url("../assets/img/up-grey.png") no-repeat scroll center center/cover;
   height: 43px;
   width: 100%;
+}
+
+.container-in-portfolio.container-full-portfolio:after {
+  content: "";
+  position: absolute;
+  top: -43px;
+  background: url("../assets/img/down-grey.png") no-repeat scroll center center/cover;
+  height: 43px;
+  width: 100%;
+  top: auto;
+  bottom: -43px;
 }
 
 .list-portfolio {
@@ -473,6 +516,184 @@ h1 {
 q {
   color: #949494;
   font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+}
+
+.container-full-our-skill {
+  position: relative;
+  padding: 3rem 0 9rem 0;
+  background-color: #f9fafc;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+@media (min-width: 1000px) {
+  .container-our-skill-media {
+    gap: 5rem;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.container-full-our-skill:before {
+  content: "";
+  position: absolute;
+  top: -43px;
+  background: url("../assets/img/up-grey.png") no-repeat scroll center center/cover;
+  height: 43px;
+  width: 100%;
+}
+
+.list-progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.progress-bar {
+  height: 10px;
+  width: 100%;
+  background: #e7e6e6;
+  border-radius: 2rem;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: "";
+  height: 10px;
+  width: 86%;
+  background: #fd5238;
+  position: absolute;
+  left: 0;
+  border-radius: 2rem;
+}
+
+.progress-bar-2::after {
+  background: #dd3540;
+  width: 62%;
+}
+
+.progress-bar-3::after {
+  background: #930037;
+  width: 78%;
+}
+
+.progress-bar-4::after {
+  background: #330f33;
+  width: 91%;
+}
+
+.container-title-progress-bar {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-what-i-do {
+  margin-top: 5rem;
+}
+@media (min-width: 1000px) {
+  .container-what-i-do {
+    margin-top: 0;
+  }
+}
+
+.container-content-what-i-do {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.container-what-i-do-content-inside {
+  text-align: left;
+}
+
+.container-what-i-do-content-inside p {
+  margin-top: 0.5rem;
+}
+
+.container-content-what-i-do .icon-i {
+  font-size: 4rem;
+  color: #fd5238;
+}
+
+.container-full-form {
+  position: relative;
+  padding: 3rem 0 9rem 0;
+  background: #ffffff;
+}
+
+.container-full-form:after {
+  content: "";
+  position: absolute;
+  top: -43px;
+  background: url("../assets/img/down-grey.png") no-repeat scroll center center/cover;
+  height: 43px;
+  width: 100%;
+  top: auto;
+  bottom: -43px;
+}
+
+.container-full-form {
+  position: relative;
+  padding: 3rem 0 9rem 0;
+  background: #f9fafc;
+  color: #000;
+}
+
+.container-full-form:before {
+  content: "";
+  position: absolute;
+  top: -43px;
+  background: url("../assets/img/up-grey.png") no-repeat scroll center center/cover;
+  height: 43px;
+  width: 100%;
+}
+
+form {
+  width: 60%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.container-labels {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container-message-input {
+  margin-top: 1rem;
+}
+
+textarea, input:not(.submit), .label-item {
+  width: 100%;
+}
+
+label {
+  text-align: left;
+}
+
+.submit {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+}
+
+.container-submit {
+  display: flex;
+}
+
+.container-form p {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .container-full-footer {
@@ -587,6 +808,13 @@ q {
 @keyframes slide-to-top {
   from {
     transform: translateY(2000px);
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0.8;
   }
   to {
     transform: translateX(0);
@@ -645,6 +873,26 @@ q {
     color: #ffffff;
   }
 }
+.slide-to-right {
+  animation: slide-to-right 0.8s linear;
+  opacity: 1;
+}
+
+.slide-to-left {
+  animation: slide-to-left 0.8s linear;
+  opacity: 1;
+}
+
+.slide-to-top {
+  animation: slide-to-top 0.8s linear;
+  opacity: 1;
+}
+
+.slide-to-bottom {
+  animation: slide-to-bottom 0.8s linear;
+  opacity: 1;
+}
+
 @media (min-width: 510px) {
   .card {
     flex-basis: calc(50% - 15px);

@@ -38,10 +38,40 @@
 <!-- MAIN -->
 <main class="container-full">
     <div class="container container-main">
-        <h2>Contact</h2> 
-        <a class="btn btn-primary" href="#">Contact me</a>
+        <h2 class="title-h2">Contact</h2> 
+        <a class="btn btn-primary contact-btn" href="#form">Contact Below</a>
     </div>
 </main>
+
+
+<!-- Section in Contact - Form -->
+
+<section id="form" class="container-full container-full-form">
+    <div class="container container-form">
+        <h2>Contact form</h2>
+        <p>Please contact me using this form or directly by other means of communication.
+            Tell me about your situation, what would you like to achieve, what I could do for you. I reply to each message up to 2 days.</p>
+        <form action="https://formspree.io/f/xrgrpjpr" method="POST">
+            <div class="container-labels">
+                <div class="label-item">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" minlength="1" required>
+                </div>
+                <div class="label-item">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" minlength="4" required>
+                </div>
+            </div>
+            <div class="container-message-input">
+                <label for="message">Your Message:</label>
+                <textarea name="message" id="message" rows="10" minlength="10" required></textarea>
+            </div>
+            <div class="container-submit">
+            <input class="submit" type="submit" value="Send">
+            </div>
+        </form>
+    </div>
+</section>
 
 
 <!-- FOOTER -->

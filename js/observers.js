@@ -1,9 +1,10 @@
 const nav = document.querySelector("nav");
-const sectionOne = document.querySelector(".container-main")
+const sectionOne = document.querySelector("main")
 
 
 const sectionOneOptions = {
-    rootMargin:"-330px 0px 0px 0px"
+    threshold:0,
+    rootMargin:"-700px 0px 0px 0px"
 };
 
 const sectionOneObserver = new IntersectionObserver(function(entries, sectionOneObserver){

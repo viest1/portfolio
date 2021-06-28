@@ -17,6 +17,10 @@ $padding-between-sections: 3rem 0 9rem 0;
 $padding-between-sections-lg: 3rem 0 9rem 0;
 $box-shadow: 0 0 5px 5px $grey;
 
+$height-progress-bar: 10px;
+$bdradius-progress-bar: 2rem;
+$bg-progress-bar: rgb(231, 230, 230);
+
 // Mixin
 
 @mixin outline {
@@ -49,6 +53,11 @@ $box-shadow: 0 0 5px 5px $grey;
   background: url($path) no-repeat scroll center center / cover;
   height: 43px;
   width: 100%;
+}
+
+@mixin zindex1 {
+  position: relative;
+  z-index: 1;
 }
 
 @mixin mq($size) {
@@ -96,7 +105,9 @@ h2 {
 }
 .container-full-who p,
 .container-full-portfolio p,
-.container-full-testimonial p {
+.container-full-testimonial p,
+.container-full-our-skill p,
+.container-form p {
   color: $grey;
 }
 .container-full-who a,
@@ -129,8 +140,8 @@ a:hover i {
   color: $orange;
 }
 
-.opacity{
-  opacity:0;
+.opacity {
+  opacity: 0;
 }
 // Typography
 
@@ -145,12 +156,18 @@ body {
 
 h1 {
   // font-size: clamp(2.5rem, 1rem + 3vw, 5rem);
-  font-size: clamp(2.35rem, 2.07rem + 3vw, 4.21rem);
+  // font-size: clamp(2.35rem, 2.07rem + 3vw, 4.21rem);
+  font-size: clamp(2.35rem, 2.07rem + 3vw, 6rem);
 }
 
 h2,
 h3 {
   font-size: clamp(1.8rem, 1.8rem + 1vw, 3rem);
+}
+
+.title-h2 {
+  font-size: clamp(3.1rem, 3.07rem + 3vw, 6rem);
+  @include uppercase;
 }
 
 h1,
@@ -160,6 +177,14 @@ h4,
 h5,
 h6 {
   line-height: 1.1;
+}
+
+.zindex1 {
+  @include zindex1;
+}
+
+label {
+  display: block;
 }
 
 // Nav
@@ -216,6 +241,16 @@ $bgwhite: #f4f4f4;
 .a-logo {
   position: relative;
   z-index: -1;
+}
+
+@media (max-width: 670px) {
+  @supports (backdrop-filter: blur(10px)) {
+    .container-nav:focus .list-nav-container,
+    .container-nav:focus-within .list-nav-container {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+    }
+  }
 }
 
 // Hamburger menu
@@ -315,10 +350,29 @@ h1 {
   text-shadow: 0 11px 10px rgb(0 0 0 / 19%);
 }
 
+// Another mains
+
+.title-h2 {
+  position: relative;
+  width: 100vw;
+  bottom: 0;
+}
+.title-h2::before {
+  content: "";
+  position: absolute;
+  top: auto;
+  bottom: -345px;
+  width: 100%;
+  left: 0;
+  height: 420px;
+  background: url(../assets/img/preset1-title-half-img.png) no-repeat scroll
+    center center/cover;
+}
+
 // Button
 
 .btn {
-  opacity:0;
+  opacity: 0;
   margin-top: 3em;
   padding: 1.2em 1em;
   // font-size: 1.8rem;
@@ -332,13 +386,20 @@ h1 {
   z-index: 5;
   animation: scale 3s forwards;
   animation-delay: 2s;
-
 }
 
 .btn:hover,
 .btn:focus,
 .btn:focus-within {
   background: $purple;
+}
+
+.btn.contact-btn::after {
+  content: url(../assets/img/arrow-down.svg);
+  display: inline-block;
+  margin-left: 1rem;
+  width: 1.2rem;
+  vertical-align: top;
 }
 
 // Section 1 - What I'm Doing
@@ -382,24 +443,6 @@ h1 {
   background-color: $red-darken;
 }
 
-
-.slide-to-right{
-  animation: slide-to-right 0.8s linear;
-  opacity:1;
-}
-.slide-to-left{
-  animation: slide-to-left 0.8s linear;
-  opacity:1;
-}
-.slide-to-top{
-  animation: slide-to-top 0.8s linear;
-  opacity:1;
-}
-.slide-to-bottom{
-  animation: slide-to-bottom 0.8s linear;
-  opacity:1;
-}
-
 .icon-what {
   font-size: 6rem;
 }
@@ -436,6 +479,16 @@ h1 {
 .container-full-portfolio:before {
   @include bg("../assets/img/up-grey.png");
 }
+
+//
+// SITE - PORTFOLIO.HTML
+
+.container-in-portfolio.container-full-portfolio:after {
+  @include bg("../assets/img/down-grey.png");
+  top: auto;
+  bottom: -43px;
+}
+//
 
 .list-portfolio {
   gap: 20px;
@@ -504,6 +557,164 @@ q {
   color: $grey;
   font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
 }
+
+// Section About - Our Skill
+
+.container-full-our-skill {
+  position: relative;
+  padding: $padding-between-sections;
+  background-color: $grey-light;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.container-our-skill-media {
+  @include mq(1000px) {
+    gap: 5rem;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+
+.container-full-our-skill:before {
+  @include bg("../assets/img/up-grey.png");
+}
+
+.list-progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.progress-bar {
+  height: $height-progress-bar;
+  width: 100%;
+  background: $bg-progress-bar;
+  border-radius: $bdradius-progress-bar;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: "";
+  height: $height-progress-bar;
+  width: 86%;
+  background: $orange;
+  position: absolute;
+  left: 0;
+  border-radius: $bdradius-progress-bar;
+}
+
+.progress-bar-2::after {
+  background: $red;
+  width: 62%;
+}
+.progress-bar-3::after {
+  background: $red-darken;
+  width: 78%;
+}
+.progress-bar-4::after {
+  background: $purple;
+  width: 91%;
+}
+
+.container-title-progress-bar {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+// Section About - What I Do
+
+.container-what-i-do {
+  margin-top: 5rem;
+  @include mq(1000px) {
+    margin-top: 0;
+  }
+}
+
+.container-content-what-i-do {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.container-what-i-do-content-inside {
+  text-align: left;
+}
+.container-what-i-do-content-inside p {
+  margin-top: 0.5rem;
+}
+.container-content-what-i-do .icon-i {
+  font-size: 4rem;
+  color: $orange;
+}
+
+// Section Contact - Form
+
+.container-full-form{
+  position: relative;
+  padding: $padding-between-sections-lg;
+  background: $white;
+}
+
+.container-full-form:after {
+  @include bg("../assets/img/down-grey.png");
+  top: auto;
+  bottom: -43px;
+}
+
+.container-full-form {
+  position: relative;
+  padding: $padding-between-sections;
+  background: $grey-light;
+  color:$black;
+}
+.container-full-form:before {
+  @include bg("../assets/img/up-grey.png");
+}
+form{
+  width:60%;
+  max-width:440px;
+  margin: 0 auto;
+}
+.container-labels{
+  margin-top:2rem;
+  @include df;
+  flex-direction: column;
+  gap:1rem;
+}
+.container-message-input{
+  margin-top:1rem;
+}
+
+textarea,input:not(.submit), .label-item{
+  width:100%;
+}
+
+label{
+  text-align:left;
+}
+
+.submit{
+  margin-top:1rem;
+  padding: 1rem 2rem;
+}
+
+.container-submit{
+  display: flex;
+}
+
+.container-form p{
+  max-width:600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 
 // Footer
 
@@ -624,6 +835,13 @@ q {
 @keyframes slide-to-top {
   from {
     transform: translateY(2000px);
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0.8;
   }
   to {
     transform: translateX(0);
@@ -637,7 +855,7 @@ q {
   to {
     opacity: 1;
   }
-} 
+}
 
 @keyframes text-to-top {
   from {
@@ -650,40 +868,57 @@ q {
 
 @keyframes scale {
   from {
-    opacity:0;
+    opacity: 0;
     transform: scale(1);
-    color:$white;
+    color: $white;
   }
   15% {
-    opacity:0.5;
+    opacity: 0.5;
     transform: scale(1.03);
-    color:$orange;
+    color: $orange;
   }
   30% {
-    opacity:0.8;
+    opacity: 0.8;
     transform: scale(1);
-    color:$white;
+    color: $white;
   }
   45% {
-    opacity:1;
+    opacity: 1;
     transform: scale(1.03);
-    color:$orange;
+    color: $orange;
   }
   60% {
-    opacity:1;
+    opacity: 1;
     transform: scale(1);
-    color:$white;
+    color: $white;
   }
-  80%{
-    opacity:1;
+  80% {
+    opacity: 1;
     transform: scale(1.03);
-    color:$orange;
+    color: $orange;
   }
   to {
-    opacity:1;
+    opacity: 1;
     transform: scale(1);
-    color:$white;
+    color: $white;
   }
+}
+
+.slide-to-right {
+  animation: slide-to-right 0.8s linear;
+  opacity: 1;
+}
+.slide-to-left {
+  animation: slide-to-left 0.8s linear;
+  opacity: 1;
+}
+.slide-to-top {
+  animation: slide-to-top 0.8s linear;
+  opacity: 1;
+}
+.slide-to-bottom {
+  animation: slide-to-bottom 0.8s linear;
+  opacity: 1;
 }
 
 // Media Queries
